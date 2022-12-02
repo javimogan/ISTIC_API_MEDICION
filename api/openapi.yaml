@@ -1,0 +1,335 @@
+openapi: 3.0.1
+info:
+  title: Medición iHelemet
+  description: API para la gestión de iHelemt
+  contact:
+    name: Soporte iHelmet
+    email: contacto@ihelmet.com
+  version: "1.0"
+servers:
+- url: /
+paths:
+  /data/{id}:
+    get:
+      tags:
+      - global
+      summary: Se solicitan los datos de un dispositivo en concreto
+      description: el dispositivo solicita los datos al servidor calculado por la
+        IA en el servidor.
+      operationId: getInfoDevice
+      parameters:
+      - name: id
+        in: path
+        description: id del dispositivo
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /accelerometer/{id}:
+    post:
+      tags:
+      - global
+      summary: se almacenan los datos captados por el sensor
+      description: el dispositivo envía los datos captados por el sensor de acelerómetro.
+      operationId: setAccelerometer
+      parameters:
+      - name: id
+        in: path
+        description: almacena los datos del sensor acelerometro
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /gyroscope/{id}:
+    post:
+      tags:
+      - global
+      summary: Se almacenan los datos captados por el sensor
+      description: el dispositivo envía los datos captados por el sensor de giroscopio.
+      operationId: setGyroscope
+      parameters:
+      - name: id
+        in: path
+        description: almacena los datos del sensor giroscopio
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /heartrate/{id}:
+    post:
+      tags:
+      - global
+      summary: Se almacenan los datos captados por el sensor
+      description: el dispositivo envía los datos captados por el sensor de pulsaciones.
+      operationId: setHeartrate
+      parameters:
+      - name: id
+        in: path
+        description: almacena los datos del sensor pulsómetro
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /oximeter/{id}:
+    post:
+      tags:
+      - global
+      summary: Se almacenan los datos captados por el sensor
+      description: el dispositivo envía los datos captados por el sensor de oxígeno.
+      operationId: setOximeter
+      parameters:
+      - name: id
+        in: path
+        description: almacena los datos del sensor oxímetro
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /position/{id}:
+    post:
+      tags:
+      - global
+      summary: se almacenan las coordenadas captadas por el dispositivo
+      description: el dispositivo envía las coordenadas GPS actuales por si fuera
+        necesario indicar su posicion a emergencias en caso de caída.
+      operationId: setPosition
+      parameters:
+      - name: id
+        in: path
+        description: almacena los datos de coordenadas
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /falsefall/{id}:
+    post:
+      tags:
+      - global
+      summary: se almacenan las coordenadas captadas por el dispositivo
+      description: "cuando se detecta una caída puede resultar un falso positivo en\
+        \ un plazo de diez segundos, si no se indica que ha sido una falsa caída el\
+        \ servidor avisará a emergencias."
+      operationId: setFalsefall
+      parameters:
+      - name: id
+        in: path
+        description: Almacena los datos de falsa caída
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+components:
+  schemas:
+    Device:
+      type: object
+      properties:
+        id:
+          maximum: 999999
+          minimum: 1
+          type: integer
+          description: User's device
+        userId:
+          type: string
+          description: Owner
+        accelerometer:
+          maximum: 100
+          minimum: 0
+          type: number
+        gyroscope:
+          maximum: 100
+          minimum: 0
+          type: number
+        heartrate:
+          maximum: 100
+          minimum: 0
+          type: number
+        oximeter:
+          maximum: 100
+          minimum: 0
+          type: number
+        position:
+          maximum: 100
+          minimum: 0
+          type: number
+        falsefall:
+          type: boolean
+      example:
+        id: 10120
+        device_type: Helmet
+        userId: contacto@ihelmet.com
+  responses:
+    successful_device:
+      description: Device
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Device'
+    successful_bool:
+      description: Successful response
+      content:
+        text/plain:
+          schema:
+            type: boolean
+            example: true
+            x-content-type: text/plain
+    "404NotFound":
+      description: Not found response
+      content:
+        text/plain:
+          schema:
+            title: Endpoint not found
+            type: string
+            example: Not found
+            x-content-type: text/plain
