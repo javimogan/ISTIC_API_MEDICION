@@ -1,6 +1,7 @@
 'use strict';
-
-
+const max = 9999
+const min = 0
+const names = ["Raul", "Jaime","Diego", "Daniel","Maria", "Juana", "Pepito", "Paco"]
 /**
  * Se solicitan los datos de un dispositivo en concreto
  * el dispositivo solicita los datos al servidor calculado por la IA en el servidor.
@@ -12,9 +13,9 @@ exports.getInfoDevice = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 10120,
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
   "device_type" : "Helmet",
-  "userId" : "contacto@ihelmet.com"
+  "userId" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
