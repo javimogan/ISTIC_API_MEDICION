@@ -36,7 +36,7 @@ exports.getInfoDevice = function(id) {
 exports.setAccelerometer = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -56,7 +56,7 @@ exports.setAccelerometer = function(id) {
 exports.setFalsefall = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -76,7 +76,7 @@ exports.setFalsefall = function(id) {
 exports.setGyroscope = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -96,7 +96,7 @@ exports.setGyroscope = function(id) {
 exports.setHeartrate = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -116,7 +116,7 @@ exports.setHeartrate = function(id) {
 exports.setOximeter = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -136,7 +136,7 @@ exports.setOximeter = function(id) {
 exports.setPosition = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
